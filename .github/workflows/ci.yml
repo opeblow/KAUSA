@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Typecheck and build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck frontend
+        run: npx tsc -b --noEmit
+
+      - name: Typecheck Convex backend
+        run: npx tsc -p convex/tsconfig.json --noEmit
+
+      - name: Build
+        run: npx vite build
+        env:
+          VITE_CONVEX_URL: ${{ vars.VITE_CONVEX_URL || 'https://hushed-oriole-906.convex.cloud' }}
+
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 7
