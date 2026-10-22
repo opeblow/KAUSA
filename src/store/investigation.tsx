@@ -117,9 +117,12 @@ function kindFor(label: string): LiveEvent["kind"] {
 }
 
 function sentenceSplit(text: string): string[] {
-  const parts = text.match(/[^.!?]+[.!?]+["']?/g);
-  if (!parts) return text.trim() ? [text.trim()] : [];
-  return parts.map((s) => s.trim()).filter(Boolean);
+  // Split only where sentence punctuation is followed by whitespace, so numbers
+  // like "$1.08M" or "23.6%" stay intact.
+  return text
+    .split(/(?<=[.!?]["']?)\s+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
 }
 
 export function InvestigationProvider({ children }: { children: ReactNode }) {
