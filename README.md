@@ -15,7 +15,16 @@
 ![NVIDIA Nemotron](https://img.shields.io/badge/LLM-NVIDIA_Nemotron-76B900?logo=nvidia&logoColor=white)
 ![Cloudflare Pages](https://img.shields.io/badge/Hosting-Cloudflare_Pages-F38020?logo=cloudflarepages&logoColor=white)
 
+[![Live demo](https://img.shields.io/badge/🌐_LIVE_DEMO-kausa--gqp.pages.dev-7C6CFF?style=for-the-badge)](https://kausa-gqp.pages.dev/)
 [![Watch the demo video](https://img.shields.io/badge/▶_DEMO_VIDEO-Watch_on_YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/x4X7j_lqx_k)
+
+**Try it live → [kausa-gqp.pages.dev](https://kausa-gqp.pages.dev/)**
+
+<a href="https://kausa-gqp.pages.dev/" title="Open Kausa live">
+  <img src="docs/screenshots/01-landing-hero.png" alt="Kausa live app — click to open" width="720" />
+</a>
+
+<br /><br />
 
 <a href="https://youtu.be/x4X7j_lqx_k" title="Watch the Kausa demo on YouTube">
   <img src="https://img.youtube.com/vi/x4X7j_lqx_k/hqdefault.jpg" alt="Kausa demo video — click to watch on YouTube" width="560" />
@@ -170,7 +179,7 @@ adapters are all optional — set whichever sponsors you have (see `.env.example
 
 # Narrator — at least one is optional (without any, narration uses the template fallback)
 npx convex env set NVIDIA_API_KEY <key>
-npx convex env set NVIDIA_MODEL nvidia/nemotron-3-super-120b-a12b
+npx convex env set NVIDIA_MODEL nvidia/nemotron-3-ultra-550b-a55b
 npx convex env set NVIDIA_BASE_URL https://integrate.api.nvidia.com/v1
 
 npx convex env set SPACEXAI_API_KEY <key>        # SpaceXAI Grok
