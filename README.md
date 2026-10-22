@@ -15,6 +15,12 @@
 ![NVIDIA Nemotron](https://img.shields.io/badge/LLM-NVIDIA_Nemotron-76B900?logo=nvidia&logoColor=white)
 ![Cloudflare Pages](https://img.shields.io/badge/Hosting-Cloudflare_Pages-F38020?logo=cloudflarepages&logoColor=white)
 
+[![Watch the demo video](https://img.shields.io/badge/▶_DEMO_VIDEO-Watch_on_YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/x4X7j_lqx_k)
+
+<a href="https://youtu.be/x4X7j_lqx_k" title="Watch the Kausa demo on YouTube">
+  <img src="https://img.youtube.com/vi/x4X7j_lqx_k/hqdefault.jpg" alt="Kausa demo video — click to watch on YouTube" width="560" />
+</a>
+
 </div>
 
 An investigative agent for business metrics. Upload a CSV or Excel export, ask *"Why did sales drop in
