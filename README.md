@@ -18,7 +18,7 @@
 [![Live demo](https://img.shields.io/badge/🌐_LIVE_DEMO-kausa--gqp.pages.dev-7C6CFF?style=for-the-badge)](https://kausa-gqp.pages.dev/)
 [![Watch the demo video](https://img.shields.io/badge/▶_DEMO_VIDEO-Watch_on_YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/x4X7j_lqx_k)
 
-**Try it live → [kausa-gqp.pages.dev](https://kausa-gqp.pages.dev/)**
+**Try it live → [kausa-gqp.pages.dev](https://kausa-gqp.pages.dev/)**  ·  **Pitch deck → [Kausa_Pitch_Deck.pptx](docs/Kausa_Pitch_Deck.pptx)**
 
 <a href="https://kausa-gqp.pages.dev/" title="Open Kausa live">
   <img src="docs/screenshots/01-landing-hero.png" alt="Kausa live app — click to open" width="720" />
