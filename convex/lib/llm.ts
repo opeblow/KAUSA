@@ -69,7 +69,7 @@ export function providers(): Provider[] {
       id: "nvidia",
       label: PROVIDER_LABELS.nvidia,
       baseUrl: process.env.NVIDIA_BASE_URL ?? "https://integrate.api.nvidia.com/v1",
-      model: process.env.NVIDIA_MODEL ?? "nvidia/nemotron-3-super-120b-a12b",
+      model: process.env.NVIDIA_MODEL ?? "nvidia/nemotron-3-ultra-550b-a55b",
       key: process.env.NVIDIA_API_KEY,
     });
   }
