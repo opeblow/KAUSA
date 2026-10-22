@@ -1,0 +1,57 @@
+name: Deploy Convex backend
+
+# Deploys the convex/ functions to the production deployment whenever backend
+# code changes on main. Requires a repository secret named CONVEX_DEPLOY_KEY
+# (Convex dashboard -> production deployment -> Settings -> Deploy key).
+# Without the secret the job is skipped.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "convex/**"
+      - "package.json"
+      - "package-lock.json"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-convex
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to production
+    runs-on: ubuntu-latest
+    env:
+      CONVEX_DEPLOY_KEY: ${{ secrets.CONVEX_DEPLOY_KEY }}
+    steps:
+      - name: Check for deploy key
+        id: key
+        run: |
+          if [ -z "$CONVEX_DEPLOY_KEY" ]; then
+            echo "CONVEX_DEPLOY_KEY secret is not set; skipping deploy."
+            echo "present=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.key.outputs.present == 'true'
+
+      - uses: actions/setup-node@v4
+        if: steps.key.outputs.present == 'true'
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        if: steps.key.outputs.present == 'true'
+        run: npm ci
+
+      - name: Typecheck Convex backend
+        if: steps.key.outputs.present == 'true'
+        run: npx tsc -p convex/tsconfig.json --noEmit
+
+      - name: Deploy
+        if: steps.key.outputs.present == 'true'
+        run: npx convex deploy -y
