@@ -21,6 +21,22 @@ the product PRD (`../Kausa_PRD.docx`, Sections 13 and 14) with the component lan
 
 ---
 
+## Table of contents
+
+- [What's implemented](#whats-implemented)
+- [Architecture](#architecture)
+  - [Backend surface (`convex/`)](#backend-surface-convex)
+- [Design language](#design-language)
+- [Tech stack](#tech-stack)
+- [Sponsors](#sponsors)
+- [Getting started](#getting-started)
+- [Screenshots](#screenshots)
+- [Project structure](#project-structure)
+- [Privacy & security](#privacy--security)
+- [Honesty and limits](#honesty-and-limits)
+
+---
+
 ## What's implemented
 
 | Screen (PRD §14) | Route | Highlights |
