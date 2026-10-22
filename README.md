@@ -55,6 +55,7 @@ the product PRD (`../Kausa_PRD.docx`, Sections 13 and 14) with the component lan
 
 ## Table of contents
 
+- [Judging criteria — how Kausa meets them](#judging-criteria--how-kausa-meets-them)
 - [What's implemented](#whats-implemented)
 - [Architecture](#architecture)
   - [Backend surface (`convex/`)](#backend-surface-convex)
@@ -68,6 +69,22 @@ the product PRD (`../Kausa_PRD.docx`, Sections 13 and 14) with the component lan
 - [Honesty and limits](#honesty-and-limits)
 
 ---
+
+## Judging criteria — how Kausa meets them
+
+Open Agent Hackathon 2026 scores every submission out of 100 on six criteria
+([official event page](https://hackathon.genai.works/event/open-agent-hackathon-2026)). Kausa is entered in
+**Track 02: The Agent That Can Explain Why** — *agents that investigate complex questions across multiple data
+sources, connect findings, and produce evidence-backed answers or recommendations.*
+
+| Criterion | Points | What judges look for | How Kausa meets it | Where to see it |
+| --- | :---: | --- | --- | --- |
+| **Impact** | 30 | Fit with the challenge statement; a meaningful real-world problem | Answers the question every operator asks — *"why did my number move?"* — on **their own uploaded data**. It investigates instead of telling one story: measures the gap against a weekday baseline, tests competing explanations, attributes the gap across driver columns with an explicit unexplained remainder, and ends with recommendations tied to the supported causes. | Ask → Live investigation → Verdict |
+| **Technical** | 20 | Implementation quality, reliability, architecture | All numbers are computed deterministically in code (weekday seasonal-naive baseline, 90% interval, OLS attribution) — the LLM never calculates. A runtime **claim verifier** checks every number in the narrative against the claim ledger and falls back to a template on any mismatch. One type-safe reactive backend (Convex: database, storage, auth, background jobs, realtime). LLM provider failover, CI typecheck + build on every push, automated backend deploys, and an end-to-end test (`npm run test:e2e`) that passes against the live site. | `convex/lib/stats.ts`, `convex/lib/llm.ts`, `.github/workflows/`, `scripts/e2e.mjs` |
+| **Innovation** | 15 | Originality of the approach | Refutation is a first-class output — the verdict shows **what we ruled out**, not only what we found. Every figure is a **claim** with its query, row sample, calculation steps and provenance, deep-linkable (`?claim=C-0004`). Durable **H-MEM memory** learns from each investigation and recalls relevant facts into the next, digit-stripped so memory can never inject an unverified number. | Verdict → "What we ruled out", Evidence panel, Memory |
+| **Demo** | 15 | How clearly the demo shows the solution and its value | One guided path: upload a file → ask in plain language → watch hypotheses tested live (plan, run log, agent graph) → read the verdict → click any number to open its evidence. | [Demo video](https://youtu.be/x4X7j_lqx_k) · [Live app](https://kausa-gqp.pages.dev/) |
+| **Product & UX** | 10 | Intuitive, accessible, easy to use | Plain-language question box with suggestions and an editable scope (segment, analysis and comparison windows). Live progress instead of a spinner; clear empty, error and 404 states; private per-account workspace; responsive layout down to mobile. | [Live app](https://kausa-gqp.pages.dev/), [Screenshots](#screenshots) |
+| **Sponsor tech** | 10 | Effective use of sponsor technology | **NVIDIA Nemotron** (via NIM) writes every verdict narrative in production. **Meterless** — the H-MEM memory engine is ported into the product to mine and recall durable memory per user. **Zetaris** — a federated-SQL client runs the per-day analysis query through the Zetaris AI Data Harness when configured, with the local store as fallback. Details and file locations in [Sponsors](#sponsors). | `convex/lib/llm.ts`, `convex/lib/hmem.ts`, `convex/lib/zetaris.ts` |
 
 ## What's implemented
 
