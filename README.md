@@ -1,4 +1,21 @@
+<div align="center">
+
+<img src="public/favicon.svg" alt="Kausa logo" width="96" height="96" />
+
 # Kausa — Know why your numbers moved.
+
+[![CI](https://github.com/opeblow/KAUSA/actions/workflows/ci.yml/badge.svg)](https://github.com/opeblow/KAUSA/actions/workflows/ci.yml)
+[![Deploy Convex backend](https://github.com/opeblow/KAUSA/actions/workflows/deploy-convex.yml/badge.svg)](https://github.com/opeblow/KAUSA/actions/workflows/deploy-convex.yml)
+
+![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?logo=tailwindcss&logoColor=white)
+![Convex](https://img.shields.io/badge/Backend-Convex-EE342F)
+![NVIDIA Nemotron](https://img.shields.io/badge/LLM-NVIDIA_Nemotron-76B900?logo=nvidia&logoColor=white)
+![Cloudflare Pages](https://img.shields.io/badge/Hosting-Cloudflare_Pages-F38020?logo=cloudflarepages&logoColor=white)
+
+</div>
 
 An investigative agent for business metrics. Upload a CSV or Excel export, ask *"Why did sales drop in
 September?"*, and Kausa measures the gap against a weekday baseline, attributes it across your numeric
