@@ -1,0 +1,41 @@
+{
+  "name": "Kausa · Zetaris + Meterless engines",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "moby": true,
+      "dockerDashComposeVersion": "v2"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    }
+  },
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "8gb",
+    "storage": "32gb"
+  },
+  "forwardPorts": [3000, 8088],
+  "portsAttributes": {
+    "3000": {
+      "label": "Zetaris Gateway",
+      "onAutoForward": "notify",
+      "visibility": "public"
+    },
+    "8088": {
+      "label": "Meterless",
+      "onAutoForward": "notify",
+      "visibility": "public"
+    }
+  },
+  "containerEnv": {
+    "ZETARIS_ACR_REGISTRY": "zetarishackathon.azurecr.io",
+    "ZETARIS_ACR_USERNAME": "zethackuser2b56a0515cc24dae98b5d8ba1c3be779",
+    "ZETARIS_DIR": "${containerWorkspaceFolder}/zetaris"
+  },
+  "remoteUser": "vscode",
+  "postCreateCommand": "bash .devcontainer/start-zetaris.sh",
+  "postStartCommand": "bash .devcontainer/start-zetaris.sh"
+}
